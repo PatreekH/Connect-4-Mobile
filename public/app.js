@@ -1,3 +1,10 @@
+// socket stuff ================
+//connects socket
+var socket = io.connect();
+
+//==============================
+
+
 var board = {
 	allCols: [
 		{
@@ -191,3 +198,16 @@ function win(){
 		location.reload();
 	}, 100)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
