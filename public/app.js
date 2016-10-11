@@ -89,14 +89,32 @@ $('.box').mouseover(function() {
 
 $('.box').on('click', function(){
 
+	/*$(this).unbind('mouseover')*/
+
+	var switchDelay = setTimeout(function() {
+		if (player == 1){
+			player = 2;
+		} else if (player == 2){
+			player = 1;
+		}
+	}, 100);
+
 	if (player == 1){
-		player = 2;
-	} else if (player == 2){
-		player = 1;
+		color = 'red';
+	}
+
+	if (player == 2){
+		color = 'blue';
 	}
 
 
 	var col = $(this).attr('data-id');
+
+	if (color == 'red'){
+		$('.c' + col).css("border", "blue solid 3px");
+	} else if (color == 'blue'){
+		$('.c' + col).css("border", "red solid 3px");
+	}
 
 	if (board.allCols[col].s6 == false){
 
@@ -158,34 +176,42 @@ function checkWin(col, spot, color){
 
 	console.log(col, spot);
 
+//check up
 	if ($('.c' + col + 's' + spot).attr('data-color') == color && $('.c' + col + 's' + (parseInt(spot) - 1)).attr('data-color') == color && $('.c' + col + 's' + (parseInt(spot) - 2)).attr('data-color') == color && $('.c' + col + 's' + (parseInt(spot) - 3)).attr('data-color') == color){
 		win();
 	}
 
+//check down
 	if ($('.c' + col + 's' + spot).attr('data-color') == color && $('.c' + col + 's' + (parseInt(spot) + 1)).attr('data-color') == color && $('.c' + col + 's' + (parseInt(spot) + 2)).attr('data-color') == color && $('.c' + col + 's' + (parseInt(spot) + 3)).attr('data-color') == color){
 		win();
 	}
 
+//check right
 	if ($('.c' + col + 's' + spot).attr('data-color') == color && $('.c' + (parseInt(col) + 1) + 's' + spot).attr('data-color') == color && $('.c' + (parseInt(col) + 2) + 's' + spot).attr('data-color') == color && $('.c' + (parseInt(col) + 3) + 's' + spot).attr('data-color') == color){
 		win();
 	}
 
+//check left
 	if ($('.c' + col + 's' + spot).attr('data-color') == color && $('.c' + (parseInt(col) - 1) + 's' + spot).attr('data-color') == color && $('.c' + (parseInt(col) - 2) + 's' + spot).attr('data-color') == color && $('.c' + (parseInt(col) - 3) + 's' + spot).attr('data-color') == color){
 		win();
 	}
 
+//check diagonal bottom right
 	if ($('.c' + col + 's' + spot).attr('data-color') == color && $('.c' + (parseInt(col) + 1) + 's' + (parseInt(spot) + 1)).attr('data-color') == color && $('.c' + (parseInt(col) + 2) + 's' + (parseInt(spot) + 2)).attr('data-color') == color && $('.c' + (parseInt(col) + 3) + 's' + (parseInt(spot) + 3)).attr('data-color') == color){
 		win();
 	}
 
+//check diagonal top left
 	if ($('.c' + col + 's' + spot).attr('data-color') == color && $('.c' + (parseInt(col) - 1) + 's' + (parseInt(spot) - 1)).attr('data-color') == color && $('.c' + (parseInt(col) - 2) + 's' + (parseInt(spot) - 2)).attr('data-color') == color && $('.c' + (parseInt(col) - 3) + 's' + (parseInt(spot) - 3)).attr('data-color') == color){
 		win();
 	}
 
+//check diagonal top right
 	if ($('.c' + col + 's' + spot).attr('data-color') == color && $('.c' + (parseInt(col) + 1) + 's' + (parseInt(spot) - 1)).attr('data-color') == color && $('.c' + (parseInt(col) + 2) + 's' + (parseInt(spot) - 2)).attr('data-color') == color && $('.c' + (parseInt(col) + 3) + 's' + (parseInt(spot) - 3)).attr('data-color') == color){
 		win();
 	}
 
+//check diagonal bottom left
 	if ($('.c' + col + 's' + spot).attr('data-color') == color && $('.c' + (parseInt(col) - 1) + 's' + (parseInt(spot) + 1)).attr('data-color') == color && $('.c' + (parseInt(col) - 2) + 's' + (parseInt(spot) + 2)).attr('data-color') == color && $('.c' + (parseInt(col) - 3) + 's' + (parseInt(spot) + 3)).attr('data-color') == color){
 		win();
 	}
@@ -193,6 +219,7 @@ function checkWin(col, spot, color){
 }
 			
 function win(){
+	$('.box').css("border", "black solid 3px");
 	winDelay = setTimeout(function() {
 		alert(color + ' wins!');
 		location.reload();

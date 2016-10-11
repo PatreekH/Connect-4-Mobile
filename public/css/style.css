@@ -30,6 +30,8 @@ body{
 }
 
 .rowWrapper{
+	padding-top: 10px;
+	padding-bottom: 10px;
 	margin-top: 3%;
 	background-color: #FFD700;
 }
