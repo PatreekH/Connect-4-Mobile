@@ -1,7 +1,7 @@
 // inits express server
 var express = require('express');
 var app = express();
-var PORT = process.env.PORT || 5000;
+var PORT = process.env.PORT || 3000;
 
 // init Web Socktet
 var http = require('http').Server(app);

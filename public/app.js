@@ -78,7 +78,7 @@ $('.box').mouseover(function() {
 		color = 'blue';
 	}
 
-	var col = $(this).attr('data-id');
+	var col = $(this).attr('data-col');
 	$('.c' + col).css("border", color + " solid 3px");
 
 
@@ -108,7 +108,7 @@ $('.box').on('click', function(){
 	}
 
 
-	var col = $(this).attr('data-id');
+	var col = $(this).attr('data-col');
 
 	if (color == 'red'){
 		$('.c' + col).css("border", "blue solid 3px");

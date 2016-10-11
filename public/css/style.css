@@ -12,16 +12,22 @@ body{
 
 }
 
-.row{
+.title-row{
 	margin-left: auto !important;
 	margin-right: auto !important;
+}
+
+.title{
+	width: 100%;
 }
 
 .box{
 	background-color: #00BFFF;
 	cursor: pointer;
 	border: black 3px solid;
-	margin: 5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
 	width: 50px;
 	height: 50px;
 	-moz-border-radius: 50px;
@@ -29,9 +35,25 @@ body{
 	border-radius: 50px;
 }
 
-.rowWrapper{
-	padding-top: 10px;
-	padding-bottom: 10px;
-	margin-top: 3%;
+.game-board{
+	margin: auto !important;
+	width: 430px;
+	height: 335px;
 	background-color: #FFD700;
+	padding: 5px;
 }
+
+.row-wrapper{
+	margin-top: 3%;
+/*	background-color: #FFD700;*/
+	height: 335px;
+}
+
+.colAttr{
+	float: left;
+	height: 100%;
+}
+
+/*.r1, .r2, .r3, .r4, .r5, .r6{
+	float: left;
+}*/
